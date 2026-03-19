@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedro Medina · Tableros Directivos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0a0f1e;
+    --navy-mid: #111827;
+    --navy-card: #141d2e;
+    --gold: #c8a96e;
+    --gold-light: #e8c98a;
+    --gold-dim: rgba(200,169,110,0.15);
+    --white: #f5f3ef;
+    --muted: #7a869a;
+    --border: rgba(200,169,110,0.2);
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.25rem 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(16px);
+    background: rgba(10,15,30,0.85);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 10rem 5vw 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(200,169,110,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,169,110,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(200,169,110,0.12) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    pointer-events: none;
+  }
+  .hero-glow-2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(30,60,120,0.4) 0%, transparent 70%);
+    bottom: 0; left: 10%;
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 780px; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 2rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 32px; height: 1px; background: var(--gold);
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 6vw, 5.2rem);
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 1.8rem;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--gold);
+  }
+  .hero-sub {
+    font-size: 1.1rem; color: var(--muted);
+    max-width: 560px; margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--gold); color: var(--navy);
+    font-weight: 600; font-size: 0.9rem;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 2rem; border-radius: 2px;
+    transition: all 0.25s;
+    box-shadow: 0 0 30px rgba(200,169,110,0.25);
+  }
+  .btn-primary:hover {
+    background: var(--gold-light);
+    box-shadow: 0 0 50px rgba(200,169,110,0.4);
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    color: var(--gold); font-size: 0.9rem; font-weight: 500;
+    text-decoration: none; letter-spacing: 0.03em;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    transition: gap 0.2s;
+  }
+  .btn-secondary:hover { gap: 0.7rem; }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 5rem;
+    padding-top: 3rem; border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2.2rem; color: var(--gold);
+    display: block; line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.78rem; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.12em; margin-top: 0.4rem;
+  }
+
+  /* ── DASHBOARD MOCKUP ── */
+  .mockup-section {
+    padding: 6rem 5vw;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .mockup-wrap {
+    position: relative; width: 100%; max-width: 960px;
+    background: var(--navy-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 0 1px var(--border);
+  }
+  .mockup-bar {
+    background: #0d1525; padding: 0.8rem 1.2rem;
+    display: flex; align-items: center; gap: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #febc2e; }
+  .dot-g { background: #28c840; }
+  .mockup-title { font-size: 0.72rem; color: var(--muted); margin-left: 0.5rem; letter-spacing: 0.1em; }
+
+  .mockup-body { padding: 1.5rem; display: grid; gap: 1rem; }
+  .kpi-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; }
+  .kpi-card {
+    background: #0d1525; border: 1px solid var(--border);
+    border-radius: 8px; padding: 1.2rem;
+  }
+  .kpi-label { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.15em; }
+  .kpi-value { font-family: var(--font-display); font-size: 1.8rem; color: var(--white); margin: 0.3rem 0; }
+  .kpi-delta { font-size: 0.72rem; }
+  .up { color: #4ade80; }
+  .down { color: #f87171; }
+
+  .chart-row { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; }
+  .chart-card {
+    background: #0d1525; border: 1px solid var(--border);
+    border-radius: 8px; padding: 1.2rem;
+  }
+  .chart-head { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem; }
+
+  /* Bar chart */
+  .bar-chart { display: flex; align-items: flex-end; gap: 8px; height: 100px; }
+  .bar {
+    flex: 1; border-radius: 3px 3px 0 0;
+    background: linear-gradient(to top, var(--gold), rgba(200,169,110,0.4));
+    transition: opacity 0.2s;
+  }
+  .bar:hover { opacity: 0.8; }
+
+  /* Donut */
+  .donut-wrap { display: flex; align-items: center; justify-content: center; height: 100px; }
+  .donut-legend { display: flex; flex-direction: column; gap: 0.4rem; margin-left: 1rem; }
+  .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.65rem; color: var(--muted); }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* ── PROBLEMS ── */
+  .section { padding: 7rem 5vw; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.5rem;
+  }
+  .section-label::before { content:''; width:24px; height:1px; background:var(--gold); }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.15; margin-bottom: 1rem;
+  }
+  .section-sub { font-size: 1rem; color: var(--muted); max-width: 520px; line-height: 1.8; margin-bottom: 3rem; }
+
+  .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.5rem; }
+  .problem-card {
+    background: var(--navy-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 2rem;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .problem-card:hover { border-color: rgba(200,169,110,0.4); }
+  .problem-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+  .problem-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+  .problem-card h3 { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.6rem; }
+  .problem-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+  /* ── PROCESS ── */
+  .process-section { padding: 7rem 5vw; background: var(--navy-mid); }
+  .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 2rem; margin-top: 3rem; }
+  .step {
+    position: relative; padding: 2rem 1.5rem;
+    border: 1px solid var(--border); border-radius: 8px;
+    background: var(--navy-card);
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .step:hover { transform: translateY(-4px); border-color: rgba(200,169,110,0.5); }
+  .step-num {
+    font-family: var(--font-display); font-size: 3.5rem;
+    color: var(--gold-dim); line-height: 1;
+    position: absolute; top: 1rem; right: 1.2rem;
+    color: rgba(200,169,110,0.1);
+  }
+  .step-icon { font-size: 1.4rem; margin-bottom: 1rem; }
+  .step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: 0.02em; }
+  .step p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+  .step-tag {
+    display: inline-block; margin-top: 1rem;
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold);
+    border: 1px solid var(--gold); border-radius: 20px;
+    padding: 0.2rem 0.7rem;
+  }
+
+  /* ── SERVICES ── */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .service-card {
+    background: var(--navy-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 2.5rem;
+    transition: all 0.3s;
+  }
+  .service-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .service-badge {
+    display: inline-block; font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    background: var(--gold-dim); color: var(--gold);
+    border-radius: 20px; padding: 0.25rem 0.8rem; margin-bottom: 1.5rem;
+  }
+  .service-card h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 1rem; }
+  .service-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
+  .service-features { list-style: none; }
+  .service-features li {
+    font-size: 0.83rem; color: var(--muted);
+    padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .service-features li::before { content: '→'; color: var(--gold); font-size: 0.75rem; }
+
+  /* ── CASES ── */
+  .cases-section { padding: 7rem 5vw; background: var(--navy-mid); }
+  .cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .case-card {
+    background: var(--navy-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 2rem; overflow: hidden; position: relative;
+  }
+  .case-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+  .case-industry {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+  }
+  .case-card h3 { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.8rem; }
+  .case-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+  .case-result {
+    display: flex; align-items: center; gap: 0.6rem;
+    background: rgba(74,222,128,0.06); border: 1px solid rgba(74,222,128,0.2);
+    border-radius: 6px; padding: 0.7rem 1rem;
+  }
+  .result-icon { font-size: 1rem; }
+  .result-text { font-size: 0.8rem; color: #4ade80; font-weight: 500; }
+
+  /* ── WHY ── */
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3rem; }
+  .why-features { display: flex; flex-direction: column; gap: 1.5rem; }
+  .why-item { display: flex; gap: 1.2rem; align-items: flex-start; }
+  .why-icon {
+    width: 40px; height: 40px; border-radius: 8px;
+    background: var(--gold-dim); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .why-item h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .why-item p { font-size: 0.83rem; color: var(--muted); line-height: 1.7; }
+  .why-visual {
+    background: var(--navy-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 2.5rem; text-align: center;
+  }
+  .delivery-badge {
+    font-family: var(--font-display); font-size: 4rem;
+    color: var(--gold); display: block; line-height: 1;
+  }
+  .delivery-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.15em; margin-top: 0.5rem; }
+  .delivery-divider { width: 40px; height: 1px; background: var(--border); margin: 1.5rem auto; }
+  .tools-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+  .tool-chip {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em;
+    color: var(--gold); border: 1px solid var(--border);
+    border-radius: 20px; padding: 0.3rem 0.9rem;
+    background: var(--gold-dim);
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    padding: 8rem 5vw;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-glow {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(200,169,110,0.08), transparent);
+  }
+  .cta-section .section-label { justify-content: center; }
+  .cta-section .section-title { text-align: center; margin: 0 auto 1rem; }
+  .cta-section .section-sub { text-align: center; margin: 0 auto 3rem; }
+  .cta-section > * { position: relative; z-index: 1; }
+  .cta-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .wa-icon { font-size: 1.1rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 5vw;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-brand { font-family: var(--font-display); font-size: 1rem; color: var(--gold); }
+  .footer-copy { font-size: 0.75rem; color: var(--muted); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .kpi-row { grid-template-columns: repeat(2,1fr); }
+    .chart-row { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 2rem; }
+    nav { padding: 1rem 4vw; }
+  }
+  @media (max-width: 480px) {
+    .kpi-row { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(30px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+  .hero h1      { animation: fadeUp 0.6s 0.15s ease both; }
+  .hero-sub     { animation: fadeUp 0.6s 0.25s ease both; }
+  .hero-actions { animation: fadeUp 0.6s 0.35s ease both; }
+  .hero-stats   { animation: fadeUp 0.6s 0.5s ease both; }
+
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 30px rgba(200,169,110,0.25); }
+    50%      { box-shadow: 0 0 50px rgba(200,169,110,0.45); }
+  }
+  .btn-primary { animation: pulse 3s ease infinite; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Pedro Medina</div>
+  <a class="nav-cta" href="https://wa.me/526673900992?text=Hola%20Pedro%2C%20me%20interesa%20un%20dashboard%20para%20mi%20empresa" target="_blank">Solicitar Demo</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Consultoría en Inteligencia de Negocio</p>
+    <h1>Tu empresa merece<br>decisiones <em>basadas en datos,</em><br>no en suposiciones.</h1>
+    <p class="hero-sub">Diseño e implemento tableros directivos a medida para que tú y tu equipo vean lo que importa, en tiempo real, y actúen con certeza.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="https://wa.me/526673900992?text=Hola%20Pedro%2C%20me%20interesa%20un%20dashboard%20para%20mi%20empresa" target="_blank">
+        <span class="wa-icon">💬</span> Hablar por WhatsApp
+      </a>
+      <a class="btn-secondary" href="#servicios">Ver servicios →</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">1–2</span>
+        <p class="stat-label">Semanas de entrega</p>
+      </div>
+      <div>
+        <span class="stat-num">100%</span>
+        <p class="stat-label">A medida de tu negocio</p>
+      </div>
+      <div>
+        <span class="stat-num">2+</span>
+        <p class="stat-label">Plataformas disponibles</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD MOCKUP -->
+<section class="mockup-section">
+  <div class="mockup-wrap">
+    <div class="mockup-bar">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+      <span class="mockup-title">TABLERO DIRECTIVO · PEDRO MEDINA</span>
+    </div>
+    <div class="mockup-body">
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <p class="kpi-label">Ingresos del mes</p>
+          <p class="kpi-value">$4.2M</p>
+          <p class="kpi-delta up">▲ 18.4% vs mes anterior</p>
+        </div>
+        <div class="kpi-card">
+          <p class="kpi-label">Margen operativo</p>
+          <p class="kpi-value">31%</p>
+          <p class="kpi-delta up">▲ 3.1 pts</p>
+        </div>
+        <div class="kpi-card">
+          <p class="kpi-label">Clientes activos</p>
+          <p class="kpi-value">847</p>
+          <p class="kpi-delta up">▲ 62 nuevos</p>
+        </div>
+        <div class="kpi-card">
+          <p class="kpi-label">Costo de adquisición</p>
+          <p class="kpi-value">$312</p>
+          <p class="kpi-delta down">▼ 9% — optimizado</p>
+        </div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-card">
+          <p class="chart-head">Ventas mensuales por canal</p>
+          <div class="bar-chart">
+            <div class="bar" style="height:55%"></div>
+            <div class="bar" style="height:70%"></div>
+            <div class="bar" style="height:48%"></div>
+            <div class="bar" style="height:85%"></div>
+            <div class="bar" style="height:62%"></div>
+            <div class="bar" style="height:95%"></div>
+            <div class="bar" style="height:78%"></div>
+            <div class="bar" style="height:88%"></div>
+          </div>
+        </div>
+        <div class="chart-card">
+          <p class="chart-head">Distribución por área</p>
+          <div class="donut-wrap">
+            <svg width="90" height="90" viewBox="0 0 90 90">
+              <circle cx="45" cy="45" r="36" fill="none" stroke="#1a2540" stroke-width="14"/>
+              <circle cx="45" cy="45" r="36" fill="none" stroke="#c8a96e" stroke-width="14"
+                stroke-dasharray="100 126" stroke-dashoffset="0" stroke-linecap="round"
+                transform="rotate(-90 45 45)"/>
+              <circle cx="45" cy="45" r="36" fill="none" stroke="#3b5bdb" stroke-width="14"
+                stroke-dasharray="50 176" stroke-dashoffset="-100" stroke-linecap="round"
+                transform="rotate(-90 45 45)"/>
+              <circle cx="45" cy="45" r="36" fill="none" stroke="#2f9e44" stroke-width="14"
+                stroke-dasharray="26 200" stroke-dashoffset="-150" stroke-linecap="round"
+                transform="rotate(-90 45 45)"/>
+            </svg>
+            <div class="donut-legend">
+              <div class="legend-item"><div class="legend-dot" style="background:#c8a96e"></div> Ventas 45%</div>
+              <div class="legend-item"><div class="legend-dot" style="background:#3b5bdb"></div> Ops 30%</div>
+              <div class="legend-item"><div class="legend-dot" style="background:#2f9e44"></div> RRHH 25%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMS -->
+<section class="section" id="problemas">
+  <p class="section-label">El problema</p>
+  <h2 class="section-title">¿Te suena familiar<br>alguna de estas situaciones?</h2>
+  <p class="section-sub">Muchas empresas toman decisiones importantes con información incompleta, tardía o dispersa en múltiples hojas de cálculo.</p>
+  <div class="problems-grid">
+    <div class="problem-card">
+      <div class="problem-icon">📊</div>
+      <h3>Datos en silos</h3>
+      <p>Tu información está en Excel, en el ERP, en el CRM y en tres sistemas más. Nadie tiene el panorama completo al mismo tiempo.</p>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">⏳</div>
+      <h3>Reportes que llegan tarde</h3>
+      <p>Cuando el reporte mensual está listo, ya es demasiado tarde para reaccionar. Las decisiones se toman sobre datos del pasado.</p>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">🎯</div>
+      <h3>Falta de visibilidad ejecutiva</h3>
+      <p>Los directivos no tienen una vista clara del desempeño de la empresa en tiempo real. Se gobierna de memoria, no con datos.</p>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">🔗</div>
+      <h3>Herramientas desconectadas</h3>
+      <p>Cada área usa herramientas distintas y nadie habla el mismo idioma de datos. Consolidar información toma días y genera errores.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section" id="proceso">
+  <p class="section-label">Cómo trabajo</p>
+  <h2 class="section-title">Un proceso claro,<br>resultados en 1 a 2 semanas</h2>
+  <p class="section-sub">No cargo de metodologías innecesarias. Mi proceso está diseñado para entregar valor rápido sin sacrificar calidad.</p>
+  <div class="process-steps">
+    <div class="step">
+      <span class="step-num">01</span>
+      <div class="step-icon">🔍</div>
+      <h3>Diagnóstico</h3>
+      <p>Entendemos juntos cuáles son las métricas críticas de tu negocio, qué decisiones tomas hoy y qué información necesitas para tomarlas mejor.</p>
+      <span class="step-tag">Día 1–2</span>
+    </div>
+    <div class="step">
+      <span class="step-num">02</span>
+      <div class="step-icon">🗺️</div>
+      <h3>Diseño del tablero</h3>
+      <p>Diseño la arquitectura y el layout del dashboard. Tú validas antes de que empiece la implementación. Sin sorpresas.</p>
+      <span class="step-tag">Día 3–5</span>
+    </div>
+    <div class="step">
+      <span class="step-num">03</span>
+      <div class="step-icon">⚙️</div>
+      <h3>Conexión de datos</h3>
+      <p>Conecto tus fuentes de datos reales: bases de datos, hojas de cálculo, APIs, ERP. Todo en una sola vista automatizada.</p>
+      <span class="step-tag">Día 5–10</span>
+    </div>
+    <div class="step">
+      <span class="step-num">04</span>
+      <div class="step-icon">🚀</div>
+      <h3>Entrega y capacitación</h3>
+      <p>Entregamos el tablero funcionando, te capacito a ti y a tu equipo, y quedo disponible para ajustes post-lanzamiento.</p>
+      <span class="step-tag">Día 10–14</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="servicios">
+  <p class="section-label">Servicios</p>
+  <h2 class="section-title">¿Qué puedo hacer<br>por tu empresa?</h2>
+  <p class="section-sub">Ofrezco soluciones de inteligencia de negocio adaptadas a la madurez digital de cada empresa.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-badge">Looker Studio</span>
+      <h3>Tablero Directivo en Looker Studio</h3>
+      <p>Ideal para empresas que ya trabajan con Google Workspace. Implemento dashboards conectados a tus fuentes de datos existentes, accesibles desde cualquier dispositivo.</p>
+      <ul class="service-features">
+        <li>Conexión a Google Sheets, BigQuery y más</li>
+        <li>Actualización automática de datos</li>
+        <li>Acceso compartido por roles</li>
+        <li>Entrega en 1 semana</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <span class="service-badge">Desarrollo a medida</span>
+      <h3>Dashboard Empresarial Personalizado</h3>
+      <p>Para empresas que necesitan máxima flexibilidad. Desarrollo tu tablero directivo con tecnología web moderna, adaptado exactamente a tu marca y flujos de trabajo.</p>
+      <ul class="service-features">
+        <li>Diseño único a tu imagen corporativa</li>
+        <li>Conexión a cualquier fuente de datos</li>
+        <li>Funcionalidades avanzadas e interactivas</li>
+        <li>Entrega en 2 semanas</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <span class="service-badge">Soporte continuo</span>
+      <h3>Mantenimiento y Evolución</h3>
+      <p>Tu negocio cambia, tu dashboard también debe hacerlo. Ofrezco planes de soporte para mantener tus tableros actualizados, añadir métricas y escalar según tus necesidades.</p>
+      <ul class="service-features">
+        <li>Ajustes y nuevas métricas mensuales</li>
+        <li>Monitoreo y corrección de errores</li>
+        <li>Capacitación continua a tu equipo</li>
+        <li>Respuesta prioritaria por WhatsApp</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="cases-section" id="casos">
+  <p class="section-label">Casos de éxito</p>
+  <h2 class="section-title">Resultados reales<br>en empresas reales</h2>
+  <p class="section-sub">He trabajado con empresas de distintos sectores transformando sus datos en decisiones más inteligentes y oportunas.</p>
+  <div class="cases-grid">
+    <div class="case-card">
+      <p class="case-industry">🏪 Sector Comercial</p>
+      <h3>Control financiero en tiempo real</h3>
+      <p>Empresa distribuidora con datos dispersos en múltiples hojas de cálculo. Implementamos un tablero centralizado con KPIs financieros y de inventario.</p>
+      <div class="case-result">
+        <span class="result-icon">✅</span>
+        <span class="result-text">Reducción del 80% en tiempo de generación de reportes</span>
+      </div>
+    </div>
+    <div class="case-card">
+      <p class="case-industry">🏗️ Sector Servicios</p>
+      <h3>Visibilidad operativa para dirección</h3>
+      <p>Empresa de servicios profesionales sin visibilidad sobre rentabilidad por proyecto. Creamos un dashboard ejecutivo integrado a su sistema de facturación.</p>
+      <div class="case-result">
+        <span class="result-icon">✅</span>
+        <span class="result-text">Identificaron proyectos no rentables en la primera semana</span>
+      </div>
+    </div>
+    <div class="case-card">
+      <p class="case-industry">🏥 Sector Salud</p>
+      <h3>Indicadores de desempeño clínico</h3>
+      <p>Clínica privada que medía su rendimiento de forma manual y mensual. Desarrollamos un tablero semanal con indicadores de ocupación, facturación y satisfacción.</p>
+      <div class="case-result">
+        <span class="result-icon">✅</span>
+        <span class="result-text">Toma de decisiones pasó de mensual a semanal</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section" id="diferenciadores">
+  <p class="section-label">Por qué yo</p>
+  <h2 class="section-title">No solo te entrego<br>un dashboard</h2>
+  <div class="why-grid">
+    <div class="why-features">
+      <div class="why-item">
+        <div class="why-icon">⚡</div>
+        <div>
+          <h4>Velocidad sin compromisos</h4>
+          <p>Entrego tableros funcionales en 1 a 2 semanas. No meses de consultoría. No procesos interminables. Resultados desde el día 14.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🎯</div>
+        <div>
+          <h4>Enfoque en tu negocio, no en la tecnología</h4>
+          <p>No te hablo en términos técnicos. Me sumerjo en tu operación para entender qué métricas mueven realmente tu empresa.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🔗</div>
+        <div>
+          <h4>Integración con lo que ya usas</h4>
+          <p>No necesitas cambiar tus sistemas. Trabajo con Looker Studio y desarrollo a medida para conectar tus fuentes actuales.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🏆</div>
+        <div>
+          <h4>Casos de éxito comprobados</h4>
+          <p>He implementado dashboards en empresas de distintos sectores. Llevo resultados medibles, no promesas.</p>
+        </div>
+      </div>
+    </div>
+    <div class="why-visual">
+      <span class="delivery-badge">1–2</span>
+      <p class="delivery-label">Semanas de entrega garantizada</p>
+      <div class="delivery-divider"></div>
+      <p style="font-size:0.78rem;color:var(--muted);margin-bottom:1rem;">Tecnologías que utilizo</p>
+      <div class="tools-row">
+        <span class="tool-chip">Looker Studio</span>
+        <span class="tool-chip">Google BigQuery</span>
+        <span class="tool-chip">Desarrollo Web</span>
+        <span class="tool-chip">Google Sheets</span>
+        <span class="tool-chip">APIs REST</span>
+        <span class="tool-chip">SQL</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contacto">
+  <div class="cta-glow"></div>
+  <p class="section-label">Hablemos</p>
+  <h2 class="section-title" style="max-width:600px">¿Listo para tomar decisiones con datos reales?</h2>
+  <p class="section-sub">Cuéntame qué necesitas y en menos de 24 horas te propongo cómo podemos transformar la información de tu empresa en una ventaja competitiva.</p>
+  <div class="cta-btns">
+    <a class="btn-primary" href="https://wa.me/526673900992?text=Hola%20Pedro%2C%20me%20interesa%20un%20tablero%20directivo%20para%20mi%20empresa.%20%C2%BFPodemos%20hablar%3F" target="_blank">
+      <span class="wa-icon">💬</span> Escribir a Pedro por WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Pedro Medina · Tableros Directivos</div>
+  <p class="footer-copy">+52 667 390 0992 &nbsp;·&nbsp; Culiacán, Sinaloa, México</p>
+</footer>
+
+</body>
+</html>
