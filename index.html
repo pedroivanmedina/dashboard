@@ -43,11 +43,11 @@
     backdrop-filter: blur(16px);
     background: rgba(10,15,30,0.85);
   }
-  .nav-logo {
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    color: var(--gold);
-    letter-spacing: 0.02em;
+  .nav-logo img {
+    height: 38px;
+    width: auto;
+    display: block;
+    object-fit: contain;
   }
   .nav-cta {
     background: var(--gold);
@@ -230,7 +230,7 @@
     font-size: clamp(2rem, 4vw, 3.2rem);
     line-height: 1.15; margin-bottom: 1rem;
   }
-  .section-sub { font-size: 1rem; color: var(--muted); max-width: 520px; line-height: 1.8; margin-bottom: 3rem; }
+  .section-sub { font-size: 1rem; color: var(--muted); max-width: 780px; line-height: 1.8; margin-bottom: 3rem; }
 
   .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.5rem; }
   .problem-card {
@@ -414,7 +414,9 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Pedro Medina</div>
+  <div class="nav-logo">
+    <img src="https://raw.githubusercontent.com/pedroivanmedina/dashboard/main/logo.jpeg" alt="Pedro Medina" />
+  </div>
   <a class="nav-cta" href="https://wa.me/526673900992?text=Hola%20Pedro%2C%20me%20interesa%20un%20dashboard%20para%20mi%20empresa" target="_blank">Solicitar Demo</a>
 </nav>
 
@@ -526,12 +528,12 @@
 <!-- PROBLEMS -->
 <section class="section" id="problemas">
   <p class="section-label">El problema</p>
-  <h2 class="section-title">¿Te suena familiar<br>alguna de estas situaciones?</h2>
+  <h2 class="section-title" style="white-space:nowrap;">¿Te suena familiar alguna de estas situaciones?</h2>
   <p class="section-sub">Muchas empresas toman decisiones importantes con información incompleta, tardía o dispersa en múltiples hojas de cálculo.</p>
   <div class="problems-grid">
     <div class="problem-card">
       <div class="problem-icon">📊</div>
-      <h3>Datos en silos</h3>
+      <h3>Datos de origen variado</h3>
       <p>Tu información está en Excel, en el ERP, en el CRM y en tres sistemas más. Nadie tiene el panorama completo al mismo tiempo.</p>
     </div>
     <div class="problem-card">
@@ -556,7 +558,7 @@
 <section class="process-section" id="proceso">
   <p class="section-label">Cómo trabajo</p>
   <h2 class="section-title">Un proceso claro,<br>resultados en 1 a 2 semanas</h2>
-  <p class="section-sub">No cargo de metodologías innecesarias. Mi proceso está diseñado para entregar valor rápido sin sacrificar calidad.</p>
+  <p class="section-sub" style="max-width:900px;">No cargo con metodologías innecesarias. Mi proceso está diseñado para entregar valor rápido sin sacrificar calidad.</p>
   <div class="process-steps">
     <div class="step">
       <span class="step-num">01</span>
@@ -592,8 +594,8 @@
 <!-- SERVICES -->
 <section class="section" id="servicios">
   <p class="section-label">Servicios</p>
-  <h2 class="section-title">¿Qué puedo hacer<br>por tu empresa?</h2>
-  <p class="section-sub">Ofrezco soluciones de inteligencia de negocio adaptadas a la madurez digital de cada empresa.</p>
+  <h2 class="section-title" style="white-space:nowrap;">¿Qué puedo hacer por tu empresa?</h2>
+  <p class="section-sub" style="max-width:900px;">Ofrezco soluciones de inteligencia de negocio adaptadas a la madurez digital de cada empresa.</p>
   <div class="services-grid">
     <div class="service-card">
       <span class="service-badge">Looker Studio</span>
@@ -634,8 +636,8 @@
 <!-- CASES -->
 <section class="cases-section" id="casos">
   <p class="section-label">Casos de éxito</p>
-  <h2 class="section-title">Resultados reales<br>en empresas reales</h2>
-  <p class="section-sub">He trabajado con empresas de distintos sectores transformando sus datos en decisiones más inteligentes y oportunas.</p>
+  <h2 class="section-title" style="white-space:nowrap;">Resultados reales en empresas reales</h2>
+  <p class="section-sub" style="max-width:900px;">He trabajado con empresas de distintos sectores transformando sus datos en decisiones más inteligentes y oportunas.</p>
   <div class="cases-grid">
     <div class="case-card">
       <p class="case-industry">🏪 Sector Comercial</p>
@@ -670,7 +672,7 @@
 <!-- WHY -->
 <section class="section" id="diferenciadores">
   <p class="section-label">Por qué yo</p>
-  <h2 class="section-title">No solo te entrego<br>un dashboard</h2>
+  <h2 class="section-title" style="white-space:nowrap;">No solo te entrego un dashboard</h2>
   <div class="why-grid">
     <div class="why-features">
       <div class="why-item">
@@ -734,7 +736,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand">Pedro Medina · Tableros Directivos</div>
+  <div class="footer-brand"><img src="https://raw.githubusercontent.com/pedroivanmedina/dashboard/main/logo.jpeg" alt="Pedro Medina" style="height:28px;width:auto;vertical-align:middle;opacity:0.85;" /></div>
   <p class="footer-copy">+52 667 390 0992 &nbsp;·&nbsp; Culiacán, Sinaloa, México</p>
 </footer>
 
