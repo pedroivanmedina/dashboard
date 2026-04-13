@@ -367,6 +367,56 @@
     background: var(--gold-dim);
   }
 
+
+  /* ── TESTIMONIOS ── */
+  .testimonials-section { padding: 6rem 5vw; }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+    margin-top: 2.2rem;
+  }
+  .testimonial-card {
+    background: var(--navy-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.4rem;
+    position: relative;
+  }
+  .testimonial-card::before {
+    content: '“';
+    position: absolute;
+    top: 0.5rem;
+    left: 0.8rem;
+    font-family: var(--font-display);
+    font-size: 2.3rem;
+    line-height: 1;
+    color: var(--gold-dim);
+  }
+  .testimonial-quote {
+    font-size: 0.9rem;
+    color: var(--white);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+  }
+  .testimonial-meta {
+    font-size: 0.76rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .testimonial-result {
+    display: inline-flex;
+    margin-top: 0.8rem;
+    font-size: 0.75rem;
+    color: #4ade80;
+    border: 1px solid rgba(74,222,128,0.25);
+    background: rgba(74,222,128,0.08);
+    border-radius: 999px;
+    padding: 0.2rem 0.6rem;
+  }
+
   /* ── CTA ── */
   .cta-section {
     padding: 8rem 5vw;
@@ -797,6 +847,31 @@
         <span class="tool-chip">SQL</span>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- TESTIMONIOS -->
+<section class="testimonials-section" id="testimonios" aria-label="Testimonios de clientes">
+  <p class="section-label">Testimonios</p>
+  <h2 class="section-title">Resultados que ya están viviendo otros equipos</h2>
+  <p class="section-sub">Historias breves de clientes que pasaron de reportes tardíos a decisiones semanales con datos confiables.</p>
+  <div class="testimonials-grid">
+    <article class="testimonial-card">
+      <p class="testimonial-quote">Pasamos de consolidar reportes en 2 días a tener indicadores diarios en 20 minutos. Ahora dirección decide con información actualizada.</p>
+      <p class="testimonial-meta">Gerencia de Operaciones · Distribución comercial</p>
+      <span class="testimonial-result">-80% tiempo de reportes</span>
+    </article>
+    <article class="testimonial-card">
+      <p class="testimonial-quote">Antes revisábamos rentabilidad al cierre de mes. Con el tablero identificamos desvíos en la primera semana y corregimos a tiempo.</p>
+      <p class="testimonial-meta">Dirección General · Servicios profesionales</p>
+      <span class="testimonial-result">Decisión de mensual a semanal</span>
+    </article>
+    <article class="testimonial-card">
+      <p class="testimonial-quote">La visibilidad por área nos ayudó a alinear ventas, operación y finanzas en una sola reunión ejecutiva de 30 minutos.</p>
+      <p class="testimonial-meta">Coordinación Administrativa · Clínica privada</p>
+      <span class="testimonial-result">+1 reunión directiva con KPIs unificados</span>
+    </article>
   </div>
 </section>
 
