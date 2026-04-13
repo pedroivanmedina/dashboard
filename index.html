@@ -3,8 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Diseño e implementación de tableros directivos a medida para empresas: integra tus datos, visualiza KPIs en tiempo real y toma decisiones con certeza.">
+<link rel="canonical" href="https://pedromedina.mx/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:title" content="Pedro Medina · Tableros Directivos">
+<meta property="og:description" content="Tableros directivos a medida para decisiones basadas en datos en tiempo real.">
+<meta property="og:url" content="https://pedromedina.mx/">
+<meta property="og:image" content="https://pedromedina.mx/logo.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pedro Medina · Tableros Directivos">
+<meta name="twitter:description" content="Consultoría en inteligencia de negocio y dashboards ejecutivos a medida.">
+<meta name="twitter:image" content="https://pedromedina.mx/logo.jpeg">
 <title>Pedro Medina · Tableros Directivos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -380,6 +393,52 @@
   .footer-brand { font-family: var(--font-display); font-size: 1rem; color: var(--gold); }
   .footer-copy { font-size: 0.75rem; color: var(--muted); }
 
+  .focus-ring:focus-visible,
+  .nav-cta:focus-visible,
+  .btn-primary:focus-visible,
+  .btn-secondary:focus-visible {
+    outline: 2px solid var(--gold-light);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .section-sub-wide { max-width: 900px; }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .skip-link:focus-visible {
+    left: 1rem;
+    top: 1rem;
+    width: auto;
+    height: auto;
+    padding: 0.6rem 1rem;
+    background: var(--gold);
+    color: var(--navy);
+    z-index: 999;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  .section-title-narrow { max-width: 600px; margin-left: auto; margin-right: auto; }
+  .muted-caption { font-size: 0.78rem; color: var(--muted); margin-bottom: 1rem; }
+  .footer-logo { height: 28px; width: auto; vertical-align: middle; opacity: 0.85; }
+  .bar-55 { height: 55%; }
+  .bar-70 { height: 70%; }
+  .bar-48 { height: 48%; }
+  .bar-85 { height: 85%; }
+  .bar-62 { height: 62%; }
+  .bar-95 { height: 95%; }
+  .bar-78 { height: 78%; }
+  .bar-88 { height: 88%; }
+  .legend-gold { background: #c8a96e; }
+  .legend-blue { background: #3b5bdb; }
+  .legend-green { background: #2f9e44; }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     .kpi-row { grid-template-columns: repeat(2,1fr); }
@@ -412,30 +471,45 @@
     50%      { box-shadow: 0 0 50px rgba(200,169,110,0.45); }
   }
   .btn-primary { animation: pulse 3s ease infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .btn-primary { animation: none; }
+  }
+
 </style>
 </head>
 <body>
+<a href="#contenido" class="skip-link">Saltar al contenido</a>
 
+<header>
 <!-- NAV -->
-<nav>
+<nav aria-label="Navegación principal">
   <div class="nav-logo">
-    <img src="https://raw.githubusercontent.com/pedroivanmedina/dashboard/main/logo.jpeg" alt="Pedro Medina" />
+    <img src="logo.jpeg" alt="Pedro Medina" />
   </div>
-  <a class="nav-cta" href="https://wa.me/526673900992?text=Hola%20Pedro%2C%20me%20interesa%20un%20dashboard%20para%20mi%20empresa" target="_blank">Solicitar Demo</a>
+  <a class="nav-cta" href="https://wa.me/526673900992?text=Hola%20Pedro%2C%20me%20interesa%20un%20dashboard%20para%20mi%20empresa" target="_blank" rel="noopener noreferrer">Solicitar Demo</a>
 </nav>
+</header>
 
+<main id="contenido">
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-grid-bg"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-glow-2"></div>
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-glow-2" aria-hidden="true"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Consultoría en Inteligencia de Negocio</p>
     <h1>Tu empresa merece decisiones <em>basadas en datos,</em><br>no en suposiciones.</h1>
     <p class="hero-sub">Diseño e implemento tableros directivos a medida para que tú y tu equipo vean lo que importa, en tiempo real, y actúen con certeza.</p>
     <div class="hero-actions">
-      <a class="btn-primary" href="https://wa.me/526673900992?text=Hola%20Pedro%2C%20me%20interesa%20un%20dashboard%20para%20mi%20empresa" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#0a0f1e"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <a class="btn-primary" href="https://wa.me/526673900992?text=Hola%20Pedro%2C%20me%20interesa%20un%20dashboard%20para%20mi%20empresa" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#0a0f1e" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         HABLAR POR WHATSAPP
       </a>
       <a class="btn-secondary" href="#servicios">Ver servicios →</a>
@@ -493,14 +567,14 @@
         <div class="chart-card">
           <p class="chart-head">Ventas mensuales por canal</p>
           <div class="bar-chart">
-            <div class="bar" style="height:55%"></div>
-            <div class="bar" style="height:70%"></div>
-            <div class="bar" style="height:48%"></div>
-            <div class="bar" style="height:85%"></div>
-            <div class="bar" style="height:62%"></div>
-            <div class="bar" style="height:95%"></div>
-            <div class="bar" style="height:78%"></div>
-            <div class="bar" style="height:88%"></div>
+            <div class="bar bar-55"></div>
+            <div class="bar bar-70"></div>
+            <div class="bar bar-48"></div>
+            <div class="bar bar-85"></div>
+            <div class="bar bar-62"></div>
+            <div class="bar bar-95"></div>
+            <div class="bar bar-78"></div>
+            <div class="bar bar-88"></div>
           </div>
         </div>
         <div class="chart-card">
@@ -519,9 +593,9 @@
                 transform="rotate(-90 45 45)"/>
             </svg>
             <div class="donut-legend">
-              <div class="legend-item"><div class="legend-dot" style="background:#c8a96e"></div> Ventas 45%</div>
-              <div class="legend-item"><div class="legend-dot" style="background:#3b5bdb"></div> Ops 30%</div>
-              <div class="legend-item"><div class="legend-dot" style="background:#2f9e44"></div> RRHH 25%</div>
+              <div class="legend-item"><div class="legend-dot legend-gold"></div> Ventas 45%</div>
+              <div class="legend-item"><div class="legend-dot legend-blue"></div> Ops 30%</div>
+              <div class="legend-item"><div class="legend-dot legend-green"></div> RRHH 25%</div>
             </div>
           </div>
         </div>
@@ -534,7 +608,7 @@
 <section class="section" id="problemas">
   <p class="section-label">El problema</p>
   <h2 class="section-title">¿Te suena familiar alguna de estas situaciones?</h2>
-  <p class="section-sub" style="max-width:900px;">Muchas empresas toman decisiones importantes con información incompleta, tardía o dispersa en múltiples hojas de cálculo.</p>
+  <p class="section-sub section-sub-wide">Muchas empresas toman decisiones importantes con información incompleta, tardía o dispersa en múltiples hojas de cálculo.</p>
   <div class="problems-grid">
     <div class="problem-card">
       <div class="problem-icon">📊</div>
@@ -563,7 +637,7 @@
 <section class="process-section" id="proceso">
   <p class="section-label">Cómo trabajo</p>
   <h2 class="section-title">Un proceso claro, resultados en 1 a 2 semanas</h2>
-  <p class="section-sub" style="max-width:900px;">No cargo con metodologías innecesarias. Mi proceso está diseñado para entregar valor rápido sin sacrificar calidad.</p>
+  <p class="section-sub section-sub-wide">No cargo con metodologías innecesarias. Mi proceso está diseñado para entregar valor rápido sin sacrificar calidad.</p>
   <div class="process-steps">
     <div class="step">
       <span class="step-num">01</span>
@@ -600,7 +674,7 @@
 <section class="section" id="servicios">
   <p class="section-label">Servicios</p>
   <h2 class="section-title">¿Qué puedo hacer por tu empresa?</h2>
-  <p class="section-sub" style="max-width:900px;">Ofrezco soluciones de inteligencia de negocio adaptadas a la madurez digital de cada empresa.</p>
+  <p class="section-sub section-sub-wide">Ofrezco soluciones de inteligencia de negocio adaptadas a la madurez digital de cada empresa.</p>
   <div class="services-grid">
     <div class="service-card">
       <span class="service-badge">Looker Studio</span>
@@ -642,7 +716,7 @@
 <section class="cases-section" id="casos">
   <p class="section-label">Casos de éxito</p>
   <h2 class="section-title">Resultados reales en empresas reales</h2>
-  <p class="section-sub" style="max-width:900px;">He trabajado con empresas de distintos sectores transformando sus datos en decisiones más inteligentes y oportunas.</p>
+  <p class="section-sub section-sub-wide">He trabajado con empresas de distintos sectores transformando sus datos en decisiones más inteligentes y oportunas.</p>
   <div class="cases-grid">
     <div class="case-card">
       <p class="case-industry">🏪 Sector Comercial</p>
@@ -713,7 +787,7 @@
       <span class="delivery-badge">1–2</span>
       <p class="delivery-label">Semanas de entrega garantizada</p>
       <div class="delivery-divider"></div>
-      <p style="font-size:0.78rem;color:var(--muted);margin-bottom:1rem;">Tecnologías que utilizo</p>
+      <p class="muted-caption">Tecnologías que utilizo</p>
       <div class="tools-row">
         <span class="tool-chip">Looker Studio</span>
         <span class="tool-chip">Google BigQuery</span>
@@ -728,21 +802,23 @@
 
 <!-- CTA -->
 <section class="cta-section" id="contacto">
-  <div class="cta-glow"></div>
+  <div class="cta-glow" aria-hidden="true"></div>
   <p class="section-label">Hablemos</p>
-  <h2 class="section-title" style="max-width:600px">¿Listo para tomar decisiones<br>con datos reales?</h2>
+  <h2 class="section-title section-title-narrow">¿Listo para tomar decisiones<br>con datos reales?</h2>
   <p class="section-sub">Cuéntame qué necesitas y en menos de 24 horas te propongo cómo podemos transformar la información de tu empresa en una ventaja competitiva.</p>
   <div class="cta-btns">
-    <a class="btn-primary" href="https://wa.me/526673900992?text=Hola%20Pedro%2C%20me%20interesa%20un%20tablero%20directivo%20para%20mi%20empresa.%20%C2%BFPodemos%20hablar%3F" target="_blank">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#0a0f1e"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <a class="btn-primary" href="https://wa.me/526673900992?text=Hola%20Pedro%2C%20me%20interesa%20un%20tablero%20directivo%20para%20mi%20empresa.%20%C2%BFPodemos%20hablar%3F" target="_blank" rel="noopener noreferrer">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#0a0f1e" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       HABLAR POR WHATSAPP
     </a>
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand"><img src="https://raw.githubusercontent.com/pedroivanmedina/dashboard/main/logo.jpeg" alt="Pedro Medina" style="height:28px;width:auto;vertical-align:middle;opacity:0.85;" /></div>
+  <div class="footer-brand"><img src="logo.jpeg" alt="Pedro Medina" class="footer-logo" /></div>
   <p class="footer-copy">+52 667 390 0992 &nbsp;·&nbsp; Culiacán, Sinaloa, México</p>
 </footer>
 
